@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.devandy.web.dao.CompanyDao">
+	<select id="selectAll" resultType="com.devandy.web.vo.CompanyVO">
+		SELECT *
+		FROM BOARD2
+	</select>
+	
+	<select id="selectById" parameterType="int" resultType="com.devandy.web.vo.CompanyVO">
+		SELECT *
+		FROM BOARD2
+		WHERE id = #{id}
+	</select>
+	
+	<insert id="insert" parameterType="com.devandy.web.vo.CompanyVO">
+		INSERT INTO BOARD2(idx, regi_company, ceo_name,com_number )
+		VALUES(board_seq.nextval, #{regi_company}, #{ceo_name},#{com_number} )
+	</insert>
+	<update id="update" parameterType="com.devandy.web.vo.CompanyVO">
+		UPDATE BOARD2
+		SET name = #{regi_company},
+			job = #{ceo_name},
+			ceo_name = #{ceo_name},
+			com_number = #{com_number}
+		WHERE id = #{id}
+	</update>
+</mapper>
