@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.devandy.web.dao.InfoDao">
+	<select id="selectAll" resultType="com.devandy.web.vo.InfoVO">
+		SELECT *
+		FROM BOARD4
+	</select>
+	<select id="selectById" parameterType="int" resultType="com.devandy.web.vo.InfoVO">
+		SELECT *
+		FROM BOARD4
+		WHERE idx = #{idx}
+	</select>
+	<insert id="insert" parameterType="com.devandy.web.vo.InfoVO">
+		INSERT INTO BOARD4(idx, pro_info, buyer,cost,buy_date, buy_number  )
+		VALUES(board_seq.nextval, #{pro_info}, #{buyer}, #{buy_date}, #{buy_number})
+	</insert>
+	<update id="update" parameterType="com.devandy.web.vo.InfoVO">
+		UPDATE BOARD4
+		SET pro_info = #{name},
+			buyer = #{job},
+			cost = #{cost},
+			buy_date = #{buy_date},
+			buy_number = #{buy_number}
+		WHERE idx = #{idx}
+		
+	</update>
+</mapper>
