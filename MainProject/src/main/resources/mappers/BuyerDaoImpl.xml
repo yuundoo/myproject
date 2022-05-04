@@ -5,8 +5,8 @@
 
 <mapper namespace="com.devandy.web.dao.BuyerDao">
 	<select id="selectAll" resultType="com.devandy.web.vo.BuyerVO">
-		SELECT *
-		FROM BOARD3
+		SELECT idx, name, substr(phone_number,1,7) || lpad('*',length(phone_number)-8,'*') || substr(phone_number,length(phone_number),1) 
+		FROM board3
 	</select>
 	<select id="selectById" parameterType="int" resultType="com.devandy.web.vo.BuyerVO">
 		SELECT *
